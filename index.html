@@ -222,7 +222,21 @@
   .profile-card h4{font-size:14.5px; margin-bottom:6px;}
   .profile-card span{font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
   @media (max-width:800px){ .profile-grid{grid-template-columns:repeat(2,1fr);} }
-
+/* ---------- media Profiles ---------- */
+  .profile-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .profile-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px 20px;
+    text-align:center; transition:.2s;
+  }
+  .profile-card:hover{border-color:var(--violet); transform:translateY(-3px);}
+  .profile-card .pf-icon{
+    width:44px; height:44px; margin:0 auto 16px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(139,124,255,.1); color:var(--violet); font-family:'Space Grotesk',sans-serif; font-weight:700;
+  }
+  .profile-card h4{font-size:14.5px; margin-bottom:6px;}
+  .profile-card span{font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
+  @media (max-width:800px){ .profile-grid{grid-template-columns:repeat(2,1fr);} }
   /* ---------- Contact ---------- */
   .contact-box{
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
