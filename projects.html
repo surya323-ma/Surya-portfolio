@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Projects | Surya Omar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#070B14;
+    --bg-alt:#0B1120;
+    --panel:#0F1729;
+    --line:#1C2740;
+    --cyan:#4FE3D0;
+    --violet:#8B7CFF;
+    --text:#E8ECF4;
+    --muted:#8A93AB;
+    --faint:#4A5470;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(7,11,20,.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 32px;}
+  .logo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; display:flex; align-items:center; gap:8px;}
+  .logo .dot{width:8px; height:8px; border-radius:2px; background:var(--cyan); box-shadow:0 0 12px var(--cyan);}
+  .back-link{
+    font-family:'JetBrains Mono',monospace; font-size:13px; padding:9px 18px;
+    border:1px solid var(--cyan); border-radius:4px; color:var(--cyan); transition:.2s;
+    display:flex; align-items:center; gap:8px;
+  }
+  .back-link:hover{background:var(--cyan); color:#000;}
+
+  /* ---------- Header ---------- */
+  .page-head{padding:72px 0 32px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--cyan);}
+  .section-title{font-size:clamp(28px,4vw,44px); font-weight:600; margin-bottom:16px; letter-spacing:-.01em;}
+  .section-sub{color:var(--muted); max-width:600px; font-size:15.5px;}
+
+  .count-bar{
+    display:flex; align-items:center; gap:12px; margin-top:28px;
+    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted);
+  }
+  .count-bar b{color:var(--cyan); font-size:16px;}
+
+  /* ---------- Filter chips (optional, purely visual/functional) ---------- */
+  .filter-row{display:flex; flex-wrap:wrap; gap:10px; margin:32px 0 8px;}
+  .filter-chip{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:8px 16px;
+    border:1px solid var(--line); border-radius:20px; color:var(--muted);
+    cursor:pointer; transition:.2s; background:none;
+  }
+  .filter-chip:hover{border-color:var(--cyan); color:var(--cyan);}
+  .filter-chip.active{background:var(--cyan); color:#04110F; border-color:var(--cyan); font-weight:600;}
+
+  /* ---------- Project grid ---------- */
+  .proj-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;
+    padding:32px 0 100px;
+  }
+  .proj-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px;
+    display:flex; flex-direction:column; height:100%; transition:.25s;
+  }
+  .proj-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .proj-num{font-family:'JetBrains Mono',monospace; color:var(--faint); font-size:11.5px; margin-bottom:14px;}
+  .proj-card h3{font-size:16.5px; margin-bottom:9px; line-height:1.3;}
+  .proj-card p{color:var(--muted); font-size:13px; margin-bottom:18px; flex-grow:1;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;}
+  .proj-tags span{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--cyan); background:rgba(79,227,208,.08); padding:4px 9px; border-radius:4px;}
+  .proj-links{display:flex; gap:16px; font-size:12.5px; font-family:'JetBrains Mono',monospace;}
+  .proj-links a{color:var(--text); border-bottom:1px solid var(--faint); padding-bottom:2px;}
+  .proj-links a:hover{color:var(--cyan); border-color:var(--cyan);}
+
+  @media (max-width:980px){ .proj-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .proj-grid{grid-template-columns:1fr;} }
+
+  footer{
+    border-top:1px solid var(--line); padding:32px 0; text-align:center;
+    color:var(--faint); font-size:13px; font-family:'JetBrains Mono',monospace;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>Surya.AI</div>
+    <a href="index.html#projects" class="back-link">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <span class="eyebrow">All Projects</span>
+    <h1 class="section-title">Complete project archive</h1>
+    <p class="section-sub">Every project I've built — from quick experiments and coursework to fully deployed applications. Use the filters below to narrow by category.</p>
+    <div class="count-bar"><b id="visibleCount">70</b> projects shown</div>
+  </div>
+
+  <div class="filter-row" id="filterRow">
+    <button class="filter-chip active" data-filter="all">All</button>
+    <button class="filter-chip" data-filter="ml">Machine Learning</button>
+    <button class="filter-chip" data-filter="web">Web Dev</button>
+    <button class="filter-chip" data-filter="net">Networking</button>
+    <button class="filter-chip" data-filter="nlp">NLP</button>
+  </div>
+
+  <div class="proj-grid" id="projGrid">
+    <!--
+      ============================================================
+      TEMPLATE: copy one block below per project (you have ~70).
+      Set data-cat to one of: ml | web | net | nlp  (or add your own
+      category and add a matching filter-chip above)
+      ============================================================
+    -->
+
+    <div class="proj-card" data-cat="ml">
+      <div class="proj-num">PROJECT 01</div>
+      <h3>EV Charging Demand Prediction</h3>
+      <p>Time-series forecasting model using historical EV registration data to predict charging infrastructure demand. Deployed as a live web app.</p>
+      <div class="proj-tags"><span>Python</span><span>TensorFlow</span><span>Streamlit</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/surya323-ma/EV_Adoption_forcasting" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="nlp">
+      <div class="proj-num">PROJECT 02</div>
+      <h3>BotTrainer — NLU Model Evaluator</h3>
+      <p>Trained and evaluated NLU models for chatbot intent recognition, built during the Infosys Springboard internship track.</p>
+      <div class="proj-tags"><span>Python</span><span>spaCy</span><span>PyTorch</span></div>
+      <div class="proj-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="net">
+      <div class="proj-num">PROJECT 03</div>
+      <h3>Network Traffic Anomaly Detector</h3>
+      <p>Packet-capture based anomaly detection tool that flags suspicious traffic patterns using statistical baselining.</p>
+      <div class="proj-tags"><span>Python</span><span>Scapy</span><span>Wireshark</span></div>
+      <div class="proj-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="web">
+      <div class="proj-num">PROJECT 04</div>
+      <h3>Portfolio & Personal Site</h3>
+      <p>This very site — a dark, network-themed portfolio built from scratch with vanilla HTML/CSS/JS and a canvas particle background.</p>
+      <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/surya323-ma" target="_blank">GitHub</a>
+        <a href="index.html" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="ml">
+      <div class="proj-num">PROJECT 05</div>
+      <h3>Image Classification with CNNs</h3>
+      <p>Convolutional neural network trained from scratch to classify images across 10 categories, with data augmentation pipeline.</p>
+      <div class="proj-tags"><span>PyTorch</span><span>OpenCV</span><span>NumPy</span></div>
+      <div class="proj-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="net">
+      <div class="proj-num">PROJECT 06</div>
+      <h3>Simple Chat Server (Sockets)</h3>
+      <p>Multi-client TCP chat server and client built with raw Python sockets to explore low-level networking concepts.</p>
+      <div class="proj-tags"><span>Python</span><span>Sockets</span><span>Threading</span></div>
+      <div class="proj-links">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">Live Demo</a>
+      </div>
+    </div>
+
+    <!--
+      Continue adding your remaining ~64 project cards here,
+      following the exact same <div class="proj-card" data-cat="..."> pattern.
+    -->
+
+  </div>
+</div>
+
+<footer>© 2026 Surya — AI/ML & Network Systems Portfolio</footer>
+
+<script>
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.proj-card');
+  const countEl = document.getElementById('visibleCount');
+
+  function applyFilter(filter){
+    let visible = 0;
+    cards.forEach(card => {
+      const show = filter === 'all' || card.dataset.cat === filter;
+      card.style.display = show ? 'flex' : 'none';
+      if(show) visible++;
+    });
+    countEl.textContent = visible;
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      applyFilter(chip.dataset.filter);
+    });
+  });
+
+  // initialize count on load
+  countEl.textContent = cards.length;
+</script>
+
+</body>
+</html>
