@@ -222,21 +222,73 @@
   .profile-card h4{font-size:14.5px; margin-bottom:6px;}
   .profile-card span{font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
   @media (max-width:800px){ .profile-grid{grid-template-columns:repeat(2,1fr);} }
-/* ---------- media Profiles ---------- */
-  .profile-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  .profile-card{
-    background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px 20px;
-    text-align:center; transition:.2s;
-  }
-  .profile-card:hover{border-color:var(--violet); transform:translateY(-3px);}
-  .profile-card .pf-icon{
-    width:44px; height:44px; margin:0 auto 16px; border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(139,124,255,.1); color:var(--violet); font-family:'Space Grotesk',sans-serif; font-weight:700;
-  }
-  .profile-card h4{font-size:14.5px; margin-bottom:6px;}
-  .profile-card span{font-size:12px; color:var(--muted); font-family:'JetBrains Mono',monospace;}
-  @media (max-width:800px){ .profile-grid{grid-template-columns:repeat(2,1fr);} }
+  /* ---------- Social Profiles ---------- */
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.profile-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:26px 20px;
+    text-align:center;
+    transition:0.3s ease;
+    text-decoration:none;
+    color:inherit;
+}
+
+.profile-card:hover{
+    border-color:var(--violet);
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(139,124,255,.15);
+}
+
+.profile-card .pf-icon{
+    width:56px;
+    height:56px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(139,124,255,.12);
+    color:var(--violet);
+    font-size:24px;
+    transition:0.3s ease;
+}
+
+.profile-card:hover .pf-icon{
+    background:var(--violet);
+    color:#fff;
+    transform:rotate(10deg) scale(1.1);
+}
+
+.profile-card h4{
+    font-size:16px;
+    margin-bottom:6px;
+    color:var(--text);
+}
+
+.profile-card span{
+    font-size:13px;
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+}
+
+@media (max-width:800px){
+    .profile-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media (max-width:500px){
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+}
   /* ---------- Contact ---------- */
   .contact-box{
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
@@ -265,7 +317,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo"><span class="dot"></span>MAYANK.AI</div>
+    <div class="logo"><span class="dot"></span>Surya.AI</div>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
